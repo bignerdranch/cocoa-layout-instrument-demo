@@ -40,7 +40,7 @@ class ViewController: UIViewController,
         flowLayout.scrollDirection = .Horizontal
 
         collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: flowLayout)
-        collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -50,7 +50,7 @@ class ViewController: UIViewController,
         view.addSubview(collectionView)
 
         pageControl = UIPageControl()
-        pageControl.setTranslatesAutoresizingMaskIntoConstraints(false)
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.addTarget(self, action: Selector("pageControlTapped"), forControlEvents: UIControlEvents.TouchUpInside)
         pageControl.backgroundColor = UIColor.bnr_yellowColor()
         pageControl.numberOfPages = simpleModelArray.count
@@ -62,20 +62,20 @@ class ViewController: UIViewController,
         ]
 
         let collectionViewHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|",
-            options: nil,
+            options: [],
             metrics: nil,
             views: viewsDictionary)
         NSLayoutConstraint.activateConstraints(collectionViewHorizontalConstraints)
 
         let pageControlHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[pageControl]|",
-            options: nil,
+            options: [],
             metrics: nil,
             views: viewsDictionary)
         NSLayoutConstraint.activateConstraints(pageControlHorizontalConstraints)
 
         let verticalVFL = "V:|-[collectionView][pageControl(==40)]-|"
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(verticalVFL,
-            options: nil,
+            options: [],
             metrics: nil,
             views: viewsDictionary)
         NSLayoutConstraint.activateConstraints(verticalConstraints)
@@ -88,7 +88,7 @@ class ViewController: UIViewController,
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell: CollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CollectionViewCell
+        let cell: CollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CollectionViewCell
         cell.imageView.image = UIImage(named: simpleModelArray[indexPath.row].0)
         cell.subtitleLabel.text = simpleModelArray[indexPath.row].1
         return cell

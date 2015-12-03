@@ -159,6 +159,8 @@
 		C57D01B01ACCB82900945DE5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Big Nerd Ranch";
 				TargetAttributes = {

@@ -13,7 +13,7 @@ class CollectionViewCell: UICollectionViewCell {
     var imageView: UIImageView!
     var subtitleLabel: UILabel!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -23,12 +23,12 @@ class CollectionViewCell: UICollectionViewCell {
         backgroundColor = UIColor.bnr_yellowColor()
 
         imageView = UIImageView()
-        imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         contentView.addSubview(imageView)
         
         subtitleLabel = UILabel()
-        subtitleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16)
         subtitleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
         subtitleLabel.textAlignment = NSTextAlignment.Center
@@ -91,7 +91,7 @@ class CollectionViewCell: UICollectionViewCell {
         // top and bottom
         let verticalVFL = "V:|-[imageView]-[subtitleLabel]-(>=8)-|"
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(verticalVFL,
-            options: nil,
+            options: [],
             metrics: nil,
             views: viewsDictionary)
         NSLayoutConstraint.activateConstraints(verticalConstraints)
